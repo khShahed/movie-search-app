@@ -1,3 +1,21 @@
-<h4>
-  movie-preview works!
-</h4>
+
+  <div class="col-4" [ngStyle]="animationDelay()">
+    <div class="card bg-primary  text-white" [ngStyle]="backdropStyle()">
+      <div class="card-body">
+        <div class="img-responsive">
+          <div
+            class="background"
+            height="200px"
+            width="25%"
+            [style.backgroundImage]="'url('+ this.movie.posterUrl +')'">
+          </div>
+        </div>
+        <div class="card-title h3">
+          {{movie.title}}
+          <div class="h6">{{movie?.release_date}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

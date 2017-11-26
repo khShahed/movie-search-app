@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Movie} from "./interfaces/movie";
+import {MovieService} from "./services/movie.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  currentMovie: Movie;
+
+  constructor(private service: MovieService){
+    this.service
+      .currentMovies
+      .subscribe( movie => {
+        this.currentMovie = movie;
+      });
+  }
+
+  startNewSearch() {
+    this.service.changeCurrentMovies(null);
+  }
 }

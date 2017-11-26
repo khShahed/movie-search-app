@@ -1,7 +1,30 @@
-<h1>
-  search works!
-</h1>
+<div class="container">
+  <input
+    [(ngModel)]="search"
+    name="search"
+    type="text"
+    class="form-control text-center"
+    placeholder="Search a Movie"
+    (input)="search$.next(search)"
+  >
+  
+  <div>
+      <app-movie-preview
+        *ngFor="let movie of searchResult; let i = index"
+        (click)="setCurrentMovie(movie)"
+        [movie]="movie"
+        [index]="i"
+      >
+      
+      </app-movie-preview>
+      
+      <h3
+        *ngIf="!fetching &&
+          this.searchResult?.length === 0 &&
+          search?.length > 0">
+        No Result found for {{search}}
+      </h3>
 
-<app-movie-preview></app-movie-preview>
-<app-movie-preview></app-movie-preview>
-<app-movie-preview></app-movie-preview>
+    
+  </div>
+</div>

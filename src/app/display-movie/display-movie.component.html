@@ -1,3 +1,15 @@
-<p>
-  display-movie works!
-</p>
+<div class="col-6">
+  <div class="h2">{{movie.title}}</div>
+  <span class="text-light">{{movie.release_date}}</span>
+  <br>
+  <div class="text-justify">
+    {{movie.overview}}
+  </div>
+</div>
+
+<div class="col-6">
+  <img
+    [src]="movie.posterUrl"
+    [alt]="movie.title"
+    class="movie-poster">
+</div>
